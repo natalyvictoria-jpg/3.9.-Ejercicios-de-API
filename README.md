@@ -19,7 +19,82 @@
 👨‍🏫 **Docente:** Anastacio Rodriguez Garcia
 
 
-# Api Promedio
+# 📊 API Promedio de Calificaciones - ITIC
+
+API REST desarrollada con Python y Flask que calcula el promedio 
+de calificaciones de un estudiante.
+
+## 📋 Descripción
+
+Este proyecto forma parte de la materia **Aplicaciones Web Orientadas 
+a Servicios (ITIC 2025-2026)**. El objetivo es practicar el uso de 
+rutas en Flask, lectura de datos en formato JSON y generación de 
+respuestas JSON.
+
+## 🎯 Propósito
+
+Recibir el nombre de un estudiante y una lista de calificaciones, 
+calcular automáticamente el promedio y devolver el resultado 
+en formato JSON.
+
+## 🚀 Endpoint
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| POST | `/promedio` | Calcula el promedio de calificaciones |
+
+## 📥 Ejemplo de petición
+```json
+POST /promedio
+{
+    "nombre": "Juan",
+    "calificaciones": [80, 90, 85, 70]
+}
+```
+
+## 📤 Ejemplo de respuesta
+```json
+{
+    "nombre": "Juan",
+    "calificaciones": [80, 90, 85, 70],
+    "total_materias": 4,
+    "promedio": 81.25,
+    "aprobado": true
+}
+```
+
+## 🛠 Tecnologías
+
+- Python 3.14
+- Flask 3.x
+
+## ⚙️ Instalación
+```bash
+git clone https://github.com/tu-usuario/api_promedio.git
+cd api_promedio
+python -m venv venv
+venv\Scripts\activate
+pip install flask
+```
+
+## ▶️ Ejecutar
+```bash
+python app.py
+```
+
+Probar en Postman:
+- Método: POST
+- URL: `http://127.0.0.1:5000/promedio`
+- Body: raw → JSON
+
+## 📁 Estructura
+
+| Archivo | Descripción |
+|---|---|
+| `app.py` | Aplicación principal con el endpoint |
+
+
+
 ## app.py
 ```bash
 from flask import Flask, request, jsonify
@@ -66,7 +141,107 @@ if __name__ == '__main__':
 
 ![pruebas](https://github.com/natalyvictoria-jpg/3.9.-Ejercicios-de-API/raw/main/n.jpeg)
 
-# Api Convertidor
+
+# 🌡️ API Convertidor de Temperaturas - ITIC
+
+API REST desarrollada con Python y Flask que convierte temperaturas 
+entre Celsius y Fahrenheit.
+
+## 📋 Descripción
+
+Este proyecto forma parte de la materia **Aplicaciones Web Orientadas 
+a Servicios (ITIC 2025-2026)**. El objetivo es practicar el manejo 
+de solicitudes HTTP, estructuras condicionales y procesamiento 
+simple de datos dentro de una API.
+
+## 🎯 Propósito
+
+Recibir un valor de temperatura y su escala de origen, aplicar 
+la fórmula de conversión correspondiente y devolver el resultado 
+en formato JSON.
+
+## 🚀 Endpoint
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| POST | `/convertir-temperatura` | Convierte entre Celsius y Fahrenheit |
+
+## 📌 Escalas válidas
+
+| Escala | Descripción |
+|---|---|
+| `C` | Celsius → convierte a Fahrenheit |
+| `F` | Fahrenheit → convierte a Celsius |
+
+## 📥 Ejemplo de petición — Celsius a Fahrenheit
+```json
+POST /convertir-temperatura
+{
+    "valor": 100,
+    "escala": "C"
+}
+```
+
+## 📤 Ejemplo de respuesta
+```json
+{
+    "valor_original": "100°C",
+    "escala_origen": "Celsius",
+    "resultado": 212.0,
+    "valor_convertido": "212.0°F",
+    "escala_destino": "Fahrenheit"
+}
+```
+
+## 📥 Ejemplo de petición — Fahrenheit a Celsius
+```json
+POST /convertir-temperatura
+{
+    "valor": 32,
+    "escala": "F"
+}
+```
+
+## 📤 Ejemplo de respuesta
+```json
+{
+    "valor_original": "32°F",
+    "escala_origen": "Fahrenheit",
+    "resultado": 0.0,
+    "valor_convertido": "0.0°C",
+    "escala_destino": "Celsius"
+}
+```
+
+## 🛠 Tecnologías
+
+- Python 3.14
+- Flask 3.x
+
+## ⚙️ Instalación
+```bash
+git clone https://github.com/tu-usuario/api_convertidor.git
+cd api_convertidor
+python -m venv venv
+venv\Scripts\activate
+pip install flask
+```
+
+## ▶️ Ejecutar
+```bash
+python app.py
+```
+
+Probar en Postman:
+- Método: POST
+- URL: `http://127.0.0.1:5000/convertir-temperatura`
+- Body: raw → JSON
+
+## 📁 Estructura
+
+| Archivo | Descripción |
+|---|---|
+| `app.py` | Aplicación principal con el endpoint |
 
 ## app.py
 ```bash
