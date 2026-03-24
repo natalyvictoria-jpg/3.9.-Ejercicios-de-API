@@ -2,48 +2,35 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/convertir-temperatura', methods=['POST'])
-def convertir_temperatura():
+@app.route('/promedio', methods=['POST'])
+def calcular_promedio():
     datos = request.get_json()
 
     if not datos:
         return jsonify({"error": "No se enviaron datos"}), 400
 
-    if "valor" not in datos:
-        return jsonify({"error": "El campo 'valor' es requerido"}), 400
+    if "nombre" not in datos:
+        return jsonify({"error": "El campo 'nombre' es requerido"}), 400
 
-    if "escala" not in datos:
-        return jsonify({"error": "El campo 'escala' es requerido"}), 400
+    if "calificaciones" not in datos:
+        return jsonify({"error": "El campo 'calificaciones' es requerido"}), 400
 
-    valor  = datos["valor"]
-    escala = datos["escala"].upper()
+    if len(datos["calificaciones"]) == 0:
+        return jsonify({"error": "La lista de calificaciones no puede estar vacia"}), 400
 
-    if escala == "C":
-        resultado     = (valor * 9/5) + 32
-        escala_origen = "Celsius"
-        escala_destino = "Fahrenheit"
-        simbolo_origen  = "°C"
-        simbolo_destino = "°F"
+    nombre        = datos["nombre"]
+    calificaciones = datos["calificaciones"]
+    promedio      = sum(calificaciones) / len(calificaciones)
 
-    elif escala == "F":
-        resultado      = (valor - 32) * 5/9
-        escala_origen  = "Fahrenheit"
-        escala_destino = "Celsius"
-        simbolo_origen  = "°F"
-        simbolo_destino = "°C"
+    respuesta = {
+        "nombre":          nombre,
+        "calificaciones":  calificaciones,
+        "total_materias":  len(calificaciones),
+        "promedio":        round(promedio, 2),
+        "aprobado":        promedio >= 60
+    }
 
-    else:
-        return jsonify({
-            "error": "Escala invalida. Use 'C' para Celsius o 'F' para Fahrenheit"
-        }), 400
-
-    return jsonify({
-        "valor_original": f"{valor}{simbolo_origen}",
-        "escala_origen":  escala_origen,
-        "resultado":      round(resultado, 2),
-        "valor_convertido": f"{round(resultado, 2)}{simbolo_destino}",
-        "escala_destino": escala_destino
-    }), 200
+    return jsonify(respuesta), 200
 
 
 if __name__ == '__main__':
