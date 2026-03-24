@@ -26,3 +26,13 @@
 ![pruebas](https://github.com/natalyvictoria-jpg/3.9.-Ejercicios-de-API/raw/main/u.jpeg)
 
 ![pruebas](https://github.com/natalyvictoria-jpg/3.9.-Ejercicios-de-API/raw/main/n.jpeg)
+
+# Api Convertidor
+
+![pruebas](https://github.com/natalyvictoria-jpg/3.9.-Ejercicios-de-API/raw/main/cvn.jpeg)
+
+# Conversión inversa de Fahrenheit a Celsius:
+![pruebas](https://github.com/natalyvictoria-jpg/3.9.-Ejercicios-de-API/raw/main/bts.jpeg)
+
+
+
